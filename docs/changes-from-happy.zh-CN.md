@@ -1,8 +1,8 @@
-# Happy (main) → Happy Next (next) 变更记录
+# Happy → Happy Next 变更记录
 
 [🇬🇧 English](changes-from-happy.md)
 
-本文档总结了 `next` 分支相对于 `main` 分支原版 Happy 的变更。
+本文档总结了 Happy Next 相对于原版 Happy 的变更。
 
 ## 概览
 
@@ -269,7 +269,7 @@ CLI（`happy-next-cli`）收到了大量升级。
 - **Shell 命令注入修复**，统一转义
 - **设置持久化**："不再询问" 工具审批保存到 `settings.local.json`
 - **会话标题管理**：`change_title` 工具，支持锁定
-- **CI**：`next` 分支冒烟测试，happy-wire 构建依赖
+- **CI**：冒烟测试，happy-wire 构建依赖
 - **`happy update`** 自更新命令
 - **`happy --version`** 显示 Claude、Codex 和 Gemini CLI 版本
 - **工作树子目录检测**，工作区根目录中
@@ -306,7 +306,7 @@ CLI（`happy-next-cli`）收到了大量升级。
 
 ## Bug 修复和稳定性
 
-超过 250 个 Bug 修复落地 `next` 分支。以下按领域分组。
+超过 250 个 Bug 修复。以下按领域分组。
 
 ### 消息发送
 - 修复陈旧文本状态导致的双击发送和幽灵重发（使用 ref 基础文本快照）
@@ -413,7 +413,7 @@ CLI（`happy-next-cli`）收到了大量升级。
 
 - 添加 `LICENSE`（MIT）、`SECURITY.md`、`SUPPORT.md`、`CONTRIBUTING.md`
 - GitHub Issue 和 PR 模板
-- 文档刷新；链接更新到 `next` 分支
+- 文档刷新
 - `happy-wire` 共享类型包
 - 整个 monorepo TypeScript 升级
 - 移除订阅/RevenueCat 系统

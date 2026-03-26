@@ -2,12 +2,12 @@ name: CLI Smoke Test
 
 on:
   push:
-    branches: [ main, next ]
+    branches: [ main ]
     paths:
       - 'packages/happy-cli/**'
       - '.github/workflows/cli-smoke-test.yml'
   pull_request:
-    branches: [ main, next ]
+    branches: [ main ]
     paths:
       - 'packages/happy-cli/**'
       - '.github/workflows/cli-smoke-test.yml'

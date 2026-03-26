@@ -1,8 +1,8 @@
-# Changes from Happy (main) → Happy Next (next)
+# Changes from Happy → Happy Next
 
 [🇨🇳 中文](changes-from-happy.zh-CN.md)
 
-This document summarizes what changed in the `next` branch compared to the original Happy on `main`.
+This document summarizes what changed in Happy Next compared to the original Happy.
 
 ## TL;DR
 
@@ -269,7 +269,7 @@ The CLI (`happy-next-cli`) received substantial upgrades.
 - **Shell command injection fix** with unified escaping
 - **Settings persistence**: "don't ask again" for tool approvals saved to `settings.local.json`
 - **Session title management**: `change_title` tool with lock support
-- **CI**: smoke tests on `next` branch, happy-wire build dependency
+- **CI**: smoke tests, happy-wire build dependency
 - **`happy update`** self-upgrade command
 - **`happy --version`** displays Claude, Codex, and Gemini CLI versions
 - **Worktree subdirectory detection** in workspace root
@@ -306,7 +306,7 @@ The CLI (`happy-next-cli`) received substantial upgrades.
 
 ## Bug Fixes & Stability
 
-Over 250 bug fixes landed on `next`. The following are grouped by area.
+Over 250 bug fixes landed. The following are grouped by area.
 
 ### Message Sending
 - Fix stale text state causing double-tap send and ghost resend (use ref-based text snapshot)
@@ -413,7 +413,7 @@ Over 250 bug fixes landed on `next`. The following are grouped by area.
 
 - `LICENSE` (MIT), `SECURITY.md`, `SUPPORT.md`, `CONTRIBUTING.md` added
 - GitHub Issue and PR templates
-- Documentation refreshed; links updated to `next` branch
+- Documentation refreshed
 - `happy-wire` shared types package
 - TypeScript upgraded across the monorepo
 - Subscription/RevenueCat system removed

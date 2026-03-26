@@ -8,7 +8,7 @@
 
 ## Repository Overview
 
-Yarn 1.x monorepo (`yarn@1.22.22`). Default dev branch: `next`; `main` is for upstream alignment.
+Yarn 1.x monorepo (`yarn@1.22.22`).
 
 | Package | Purpose |
 |---------|---------|
