@@ -5,7 +5,7 @@
  * Environment files should be loaded using Node's --env-file flag
  */
 
-import { existsSync, mkdirSync } from 'node:fs'
+import { closeSync, existsSync, mkdirSync, openSync, readSync, readdirSync, renameSync, statSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
 import packageJson from '../package.json'
@@ -69,6 +69,19 @@ class Configuration {
       console.log('\x1b[33m🔧 DEV MODE\x1b[0m - Data: ' + this.happyHomeDir)
     }
 
+    // Migrate ~/.happy → ~/.happy-next for existing happy-next users
+    if (!existsSync(this.happyHomeDir) && !process.env.HAPPY_HOME_DIR) {
+      const legacyDir = join(homedir(), '.happy')
+      if (existsSync(legacyDir) && this.isLegacyDirFromHappyNext(legacyDir)) {
+        try {
+          renameSync(legacyDir, this.happyHomeDir)
+          console.log(`Migrated ${legacyDir} → ${this.happyHomeDir}`)
+        } catch {
+          // Another process may have already migrated or removed the directory
+        }
+      }
+    }
+
     if (!existsSync(this.happyHomeDir)) {
       mkdirSync(this.happyHomeDir, { recursive: true })
     }
@@ -76,6 +89,32 @@ class Configuration {
     if (!existsSync(this.logsDir)) {
       mkdirSync(this.logsDir, { recursive: true })
     }
+  }
+
+  private isLegacyDirFromHappyNext(legacyDir: string): boolean {
+    try {
+      const logsDir = join(legacyDir, 'logs')
+      if (!existsSync(logsDir)) return false
+      const needle = Buffer.from('happy-next-cli')
+      const logFiles = readdirSync(logsDir)
+        .filter(f => f.endsWith('.log'))
+        .map(f => ({ name: f, mtime: statSync(join(logsDir, f)).mtimeMs }))
+        .sort((a, b) => b.mtime - a.mtime)
+        .slice(0, 5)
+      for (const { name } of logFiles) {
+        const fd = openSync(join(logsDir, name), 'r')
+        try {
+          const buf = Buffer.alloc(4096)
+          readSync(fd, buf, 0, 4096, 0)
+          if (buf.includes(needle)) return true
+        } finally {
+          closeSync(fd)
+        }
+      }
+    } catch {
+      // ignore read errors
+    }
+    return false
   }
 }
 
