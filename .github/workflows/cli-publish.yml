@@ -1,0 +1,87 @@
+name: Publish CLI
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g. 0.3.0, patch, minor, major)'
+        required: true
+        type: string
+      dry-run:
+        description: 'Dry run (skip actual publish)'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+          cache-dependency-path: yarn.lock
+          registry-url: https://registry.npmjs.org
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Verify npm token
+        run: npm whoami --registry https://registry.npmjs.org
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build happy-wire
+        run: yarn workspace happy-wire build
+
+      - name: Build CLI
+        run: yarn workspace happy-next-cli build
+
+      - name: Run tests
+        run: yarn workspace happy-next-cli test
+
+      - name: Bump version
+        working-directory: packages/happy-cli
+        run: |
+          npm version "${{ inputs.version }}" --no-git-tag-version
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          echo "NEW_VERSION=$NEW_VERSION" >> "$GITHUB_ENV"
+
+      - name: Publish to npm
+        working-directory: packages/happy-cli
+        run: npm publish ${{ inputs.dry-run && '--dry-run' || '' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Commit version bump
+        if: ${{ !inputs.dry-run }}
+        run: |
+          git add packages/happy-cli/package.json
+          git commit -m "release: happy-next-cli v${NEW_VERSION}"
+          git push origin main
+
+      - name: Summary (dry run)
+        if: ${{ inputs.dry-run }}
+        run: |
+          echo "### 🧪 Dry Run Complete" >> "$GITHUB_STEP_SUMMARY"
+          echo "Would have published **happy-next-cli@${NEW_VERSION}**" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Summary
+        if: ${{ !inputs.dry-run }}
+        run: |
+          echo "### ✅ Published" >> "$GITHUB_STEP_SUMMARY"
+          echo "**happy-next-cli@${NEW_VERSION}** is live on npm" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "[npm](https://www.npmjs.com/package/happy-next-cli/v/${NEW_VERSION})" >> "$GITHUB_STEP_SUMMARY"
