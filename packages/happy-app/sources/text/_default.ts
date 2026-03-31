@@ -37,8 +37,8 @@ export const en = {
         emptyDescription: 'Add an OpenClaw gateway to start chatting with AI',
         addMachine: 'Add Machine',
         machineType: 'Machine Type',
-        machineTypeHappy: 'Happy Machine',
-        machineTypeHappyDescription: 'Connect through a Happy machine on your computer',
+        machineTypeHappy: 'Happy Next Machine',
+        machineTypeHappyDescription: 'Connect through a Happy Next machine on your computer',
         machineTypeDirect: 'Direct Connection',
         machineTypeDirectDescription: 'Connect directly to an OpenClaw gateway',
         gatewayUrl: 'Gateway URL',
@@ -747,7 +747,7 @@ export const en = {
         // Used by Server Configuration screen (app/(app)/server.tsx)
         serverConfiguration: 'Server Configuration',
         enterServerUrl: 'Please enter a server URL',
-        notValidHappyServer: 'Not a valid Happy Server',
+        notValidHappyServer: 'Not a valid Happy Next Server',
         changeServer: 'Change Server',
         continueWithServer: 'Continue with this server?',
         resetToDefault: 'Reset to Default',
@@ -767,9 +767,9 @@ export const en = {
         killSessionConfirm: 'Are you sure you want to terminate this session?',
         archiveSession: 'Archive Session',
         archiveSessionConfirm: 'Are you sure you want to archive this session?',
-        happySessionIdCopied: 'Happy Session ID copied to clipboard',
-        failedToCopySessionId: 'Failed to copy Happy Session ID',
-        happySessionId: 'Happy Session ID',
+        happySessionIdCopied: 'Happy Next Session ID copied to clipboard',
+        failedToCopySessionId: 'Failed to copy Happy Next Session ID',
+        happySessionId: 'Happy Next Session ID',
         claudeCodeSessionId: 'Claude Code Session ID',
         claudeCodeSessionIdCopied: 'Claude Code Session ID copied to clipboard',
         aiProvider: 'AI Provider',
@@ -804,7 +804,7 @@ export const en = {
         path: 'Path',
         operatingSystem: 'Operating System',
         processId: 'Process ID',
-        happyHome: 'Happy Home',
+        happyHome: 'Happy Next Home',
         copyMetadata: 'Copy Metadata',
         agentState: 'Agent State',
         controlledByUser: 'Controlled by User',
@@ -971,7 +971,7 @@ export const en = {
     },
 
     sidebar: {
-        sessionsTitle: 'Happy',
+        sessionsTitle: 'Happy Next',
     },
 
     toolView: {
@@ -1125,8 +1125,8 @@ export const en = {
         agentIdPlaceholder: 'Enter ElevenLabs Agent ID',
 
         // Happy Voice configuration
-        happyVoiceTitle: 'Happy Voice',
-        happyVoiceDescription: 'Configure your self-hosted Happy Voice gateway.',
+        happyVoiceTitle: 'Happy Next Voice',
+        happyVoiceDescription: 'Configure your self-hosted Happy Next Voice gateway.',
         gatewayUrl: 'Gateway URL',
         gatewayUrlPlaceholder: 'https://voice.example.com',
         publicKey: 'Public Key',

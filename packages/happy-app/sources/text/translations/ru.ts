@@ -47,8 +47,8 @@ export const ru: TranslationStructure = {
         emptyDescription: 'Добавьте шлюз OpenClaw, чтобы начать общаться с AI',
         addMachine: 'Добавить машину',
         machineType: 'Тип машины',
-        machineTypeHappy: 'Happy машина',
-        machineTypeHappyDescription: 'Подключение через Happy машину на вашем компьютере',
+        machineTypeHappy: 'Happy Next машина',
+        machineTypeHappyDescription: 'Подключение через Happy Next машину на вашем компьютере',
         machineTypeDirect: 'Прямое подключение',
         machineTypeDirectDescription: 'Прямое подключение к шлюзу OpenClaw',
         gatewayUrl: 'URL шлюза',
@@ -624,7 +624,7 @@ export const ru: TranslationStructure = {
         // Used by Server Configuration screen (app/(app)/server.tsx)
         serverConfiguration: 'Настройка сервера',
         enterServerUrl: 'Пожалуйста, введите URL сервера',
-        notValidHappyServer: 'Это не валидный сервер Happy',
+        notValidHappyServer: 'Это не валидный сервер Happy Next',
         changeServer: 'Изменить сервер',
         continueWithServer: 'Продолжить с этим сервером?',
         resetToDefault: 'Сбросить по умолчанию',
@@ -644,9 +644,9 @@ export const ru: TranslationStructure = {
         killSessionConfirm: 'Вы уверены, что хотите завершить эту сессию?',
         archiveSession: 'Архивировать сессию',
         archiveSessionConfirm: 'Вы уверены, что хотите архивировать эту сессию?',
-        happySessionIdCopied: 'ID сессии Happy скопирован в буфер обмена',
-        failedToCopySessionId: 'Не удалось скопировать ID сессии Happy',
-        happySessionId: 'ID сессии Happy',
+        happySessionIdCopied: 'ID сессии Happy Next скопирован в буфер обмена',
+        failedToCopySessionId: 'Не удалось скопировать ID сессии Happy Next',
+        happySessionId: 'ID сессии Happy Next',
         claudeCodeSessionId: 'ID сессии Claude Code',
         claudeCodeSessionIdCopied: 'ID сессии Claude Code скопирован в буфер обмена',
         aiProvider: 'Поставщик ИИ',
@@ -681,7 +681,7 @@ export const ru: TranslationStructure = {
         path: 'Путь',
         operatingSystem: 'Операционная система',
         processId: 'ID процесса',
-        happyHome: 'Домашний каталог Happy',
+        happyHome: 'Домашний каталог Happy Next',
         copyMetadata: 'Копировать метаданные',
         agentState: 'Состояние агента',
         controlledByUser: 'Управляется пользователем',
@@ -969,7 +969,7 @@ export const ru: TranslationStructure = {
     },
 
     sidebar: {
-        sessionsTitle: 'Happy',
+        sessionsTitle: 'Happy Next',
     },
 
     toolView: {
@@ -1119,8 +1119,8 @@ export const ru: TranslationStructure = {
         agentId: 'ID агента',
         agentIdPlaceholder: 'Введите ID агента ElevenLabs',
 
-        happyVoiceTitle: 'Happy Voice',
-        happyVoiceDescription: 'Настройте собственный голосовой шлюз Happy Voice.',
+        happyVoiceTitle: 'Happy Next Voice',
+        happyVoiceDescription: 'Настройте собственный голосовой шлюз Happy Next Voice.',
         gatewayUrl: 'URL шлюза',
         gatewayUrlPlaceholder: 'https://voice.example.com',
         publicKey: 'Публичный ключ',

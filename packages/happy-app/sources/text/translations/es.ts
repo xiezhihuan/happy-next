@@ -36,8 +36,8 @@ export const es: TranslationStructure = {
         emptyDescription: 'Añade una puerta de enlace OpenClaw para empezar a chatear con AI',
         addMachine: 'Añadir máquina',
         machineType: 'Tipo de máquina',
-        machineTypeHappy: 'Máquina Happy',
-        machineTypeHappyDescription: 'Conectar a través de una máquina Happy en tu ordenador',
+        machineTypeHappy: 'Máquina Happy Next',
+        machineTypeHappyDescription: 'Conectar a través de una máquina Happy Next en tu ordenador',
         machineTypeDirect: 'Conexión directa',
         machineTypeDirectDescription: 'Conectar directamente a una puerta de enlace OpenClaw',
         gatewayUrl: 'URL de la puerta de enlace',
@@ -737,7 +737,7 @@ export const es: TranslationStructure = {
         // Used by Server Configuration screen (app/(app)/server.tsx)
         serverConfiguration: 'Configuración del servidor',
         enterServerUrl: 'Ingresa una URL de servidor',
-        notValidHappyServer: 'No es un servidor Happy válido',
+        notValidHappyServer: 'No es un servidor Happy Next válido',
         changeServer: 'Cambiar servidor',
         continueWithServer: '¿Continuar con este servidor?',
         resetToDefault: 'Restablecer por defecto',
@@ -757,9 +757,9 @@ export const es: TranslationStructure = {
         killSessionConfirm: '¿Seguro que quieres terminar esta sesión?',
         archiveSession: 'Archivar sesión',
         archiveSessionConfirm: '¿Seguro que quieres archivar esta sesión?',
-        happySessionIdCopied: 'ID de sesión de Happy copiado al portapapeles',
-        failedToCopySessionId: 'Falló al copiar ID de sesión de Happy',
-        happySessionId: 'ID de sesión de Happy',
+        happySessionIdCopied: 'ID de sesión de Happy Next copiado al portapapeles',
+        failedToCopySessionId: 'Falló al copiar ID de sesión de Happy Next',
+        happySessionId: 'ID de sesión de Happy Next',
         claudeCodeSessionId: 'ID de sesión de Claude Code',
         claudeCodeSessionIdCopied: 'ID de sesión de Claude Code copiado al portapapeles',
         aiProvider: 'Proveedor de IA',
@@ -794,7 +794,7 @@ export const es: TranslationStructure = {
         path: 'Ruta',
         operatingSystem: 'Sistema operativo',
         processId: 'ID del proceso',
-        happyHome: 'Directorio de Happy',
+        happyHome: 'Directorio de Happy Next',
         copyMetadata: 'Copiar metadatos',
         agentState: 'Estado del agente',
         controlledByUser: 'Controlado por el usuario',
@@ -958,7 +958,7 @@ export const es: TranslationStructure = {
     },
 
     sidebar: {
-        sessionsTitle: 'Happy',
+        sessionsTitle: 'Happy Next',
     },
 
     toolView: {
@@ -1108,8 +1108,8 @@ export const es: TranslationStructure = {
         agentId: 'ID del agente',
         agentIdPlaceholder: 'Introduce el ID del agente ElevenLabs',
 
-        happyVoiceTitle: 'Happy Voice',
-        happyVoiceDescription: 'Configura tu pasarela de voz Happy Voice autoalojada.',
+        happyVoiceTitle: 'Happy Next Voice',
+        happyVoiceDescription: 'Configura tu pasarela de voz Happy Next Voice autoalojada.',
         gatewayUrl: 'URL de la pasarela',
         gatewayUrlPlaceholder: 'https://voice.example.com',
         publicKey: 'Clave pública',

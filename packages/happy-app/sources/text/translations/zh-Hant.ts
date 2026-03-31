@@ -38,8 +38,8 @@ export const zhHant: TranslationStructure = {
         emptyDescription: '新增 OpenClaw 閘道以開始與 AI 聊天',
         addMachine: '新增機器',
         machineType: '機器類型',
-        machineTypeHappy: 'Happy 機器',
-        machineTypeHappyDescription: '透過電腦上的 Happy 機器連線',
+        machineTypeHappy: 'Happy Next 機器',
+        machineTypeHappyDescription: '透過電腦上的 Happy Next 機器連線',
         machineTypeDirect: '直接連線',
         machineTypeDirectDescription: '直接連線到 OpenClaw 閘道',
         gatewayUrl: '閘道 URL',
@@ -739,7 +739,7 @@ export const zhHant: TranslationStructure = {
         // Used by Server Configuration screen (app/(app)/server.tsx)
         serverConfiguration: '伺服器設定',
         enterServerUrl: '請輸入伺服器 URL',
-        notValidHappyServer: '不是有效的 Happy 伺服器',
+        notValidHappyServer: '不是有效的 Happy Next 伺服器',
         changeServer: '更改伺服器',
         continueWithServer: '繼續使用此伺服器？',
         resetToDefault: '重設為預設',
@@ -759,9 +759,9 @@ export const zhHant: TranslationStructure = {
         killSessionConfirm: '您確定要終止此工作階段嗎？',
         archiveSession: '封存工作階段',
         archiveSessionConfirm: '您確定要封存此工作階段嗎？',
-        happySessionIdCopied: 'Happy 工作階段 ID 已複製到剪貼簿',
-        failedToCopySessionId: '複製 Happy 工作階段 ID 失敗',
-        happySessionId: 'Happy 工作階段 ID',
+        happySessionIdCopied: 'Happy Next 工作階段 ID 已複製到剪貼簿',
+        failedToCopySessionId: '複製 Happy Next 工作階段 ID 失敗',
+        happySessionId: 'Happy Next 工作階段 ID',
         claudeCodeSessionId: 'Claude Code 工作階段 ID',
         claudeCodeSessionIdCopied: 'Claude Code 工作階段 ID 已複製到剪貼簿',
         aiProvider: 'AI 提供者',
@@ -796,7 +796,7 @@ export const zhHant: TranslationStructure = {
         path: '路徑',
         operatingSystem: '作業系統',
         processId: '處理程序 ID',
-        happyHome: 'Happy 主目錄',
+        happyHome: 'Happy Next 主目錄',
         copyMetadata: '複製中繼資料',
         agentState: 'Agent 狀態',
         controlledByUser: '使用者控制',
@@ -960,7 +960,7 @@ export const zhHant: TranslationStructure = {
     },
 
     sidebar: {
-        sessionsTitle: 'Happy',
+        sessionsTitle: 'Happy Next',
     },
 
     toolView: {
@@ -1110,8 +1110,8 @@ export const zhHant: TranslationStructure = {
         agentId: 'Agent ID',
         agentIdPlaceholder: '輸入 ElevenLabs Agent ID',
 
-        happyVoiceTitle: 'Happy Voice',
-        happyVoiceDescription: '設定自架的 Happy Voice 語音閘道器。',
+        happyVoiceTitle: 'Happy Next Voice',
+        happyVoiceDescription: '設定自架的 Happy Next Voice 語音閘道器。',
         gatewayUrl: '閘道器網址',
         gatewayUrlPlaceholder: 'https://voice.example.com',
         publicKey: '公鑰',

@@ -42,7 +42,7 @@ class Configuration {
       const expandedPath = process.env.HAPPY_HOME_DIR.replace(/^~/, homedir())
       this.happyHomeDir = expandedPath
     } else {
-      this.happyHomeDir = join(homedir(), '.happy')
+      this.happyHomeDir = join(homedir(), '.happy-next')
     }
 
     this.logsDir = join(this.happyHomeDir, 'logs')
@@ -61,7 +61,7 @@ class Configuration {
     if (variant === 'dev' && !this.happyHomeDir.includes('dev')) {
       console.warn('⚠️  WARNING: HAPPY_VARIANT=dev but HAPPY_HOME_DIR does not contain "dev"')
       console.warn(`   Current: ${this.happyHomeDir}`)
-      console.warn(`   Expected: Should contain "dev" (e.g., ~/.happy-dev)`)
+      console.warn(`   Expected: Should contain "dev" (e.g., ~/.happy-next-dev)`)
     }
 
     // Visual indicator on CLI startup (only if not daemon process to avoid log clutter)

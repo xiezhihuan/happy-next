@@ -56,8 +56,8 @@ npm run setup:dev
 ```
 
 This creates:
-- `~/.happy/` - Stable version data (production-ready)
-- `~/.happy-dev/` - Development version data (for testing changes)
+- `~/.happy-next/` - Stable version data (production-ready)
+- `~/.happy-next-dev/` - Development version data (for testing changes)
 
 ### Daily Usage
 
@@ -74,8 +74,8 @@ npm run dev:daemon:start
 ## Visual Indicators
 
 You'll always see which version you're using:
-- `✅ STABLE MODE - Data: ~/.happy`
-- `🔧 DEV MODE - Data: ~/.happy-dev`
+- `✅ STABLE MODE - Data: ~/.happy-next`
+- `🔧 DEV MODE - Data: ~/.happy-next-dev`
 
 ## Common Tasks
 
@@ -128,11 +128,11 @@ Both versions maintain complete separation:
 
 | Aspect | Stable | Development |
 |--------|--------|-------------|
-| Data Directory | `~/.happy/` | `~/.happy-dev/` |
-| Settings | `~/.happy/settings.json` | `~/.happy-dev/settings.json` |
-| Auth Keys | `~/.happy/access.key` | `~/.happy-dev/access.key` |
-| Daemon State | `~/.happy/daemon.state.json` | `~/.happy-dev/daemon.state.json` |
-| Logs | `~/.happy/logs/` | `~/.happy-dev/logs/` |
+| Data Directory | `~/.happy-next/` | `~/.happy-next-dev/` |
+| Settings | `~/.happy-next/settings.json` | `~/.happy-next-dev/settings.json` |
+| Auth Keys | `~/.happy-next/access.key` | `~/.happy-next-dev/access.key` |
+| Daemon State | `~/.happy-next/daemon.state.json` | `~/.happy-next-dev/daemon.state.json` |
+| Logs | `~/.happy-next/logs/` | `~/.happy-next-dev/logs/` |
 
 **No conflicts!** Both can run simultaneously with separate:
 - Authentication sessions
@@ -189,8 +189,8 @@ Look for the visual indicator:
 
 Or check the daemon status:
 ```bash
-npm run stable:daemon:status   # Shows ~/.happy/ data location
-npm run dev:daemon:status       # Shows ~/.happy-dev/ data location
+npm run stable:daemon:status   # Shows ~/.happy-next/ data location
+npm run dev:daemon:status       # Shows ~/.happy-next-dev/ data location
 ```
 
 ### `yarn link:dev` fails with permission denied?
@@ -209,7 +209,7 @@ sudo yarn link:dev
 2. **Use dev for testing changes** - Test new features without breaking your workflow
 3. **Run both simultaneously** - Compare behavior side-by-side
 4. **Different accounts** - Use different Happy accounts for dev/stable if needed
-5. **Check logs** - Logs are separated: `~/.happy/logs/` vs `~/.happy-dev/logs/`
+5. **Check logs** - Logs are separated: `~/.happy-next/logs/` vs `~/.happy-next-dev/logs/`
 
 ## Example Workflow
 
@@ -243,8 +243,8 @@ npm run stable:daemon:start
 
 The system uses the built-in `HAPPY_HOME_DIR` environment variable to separate data:
 
-- **Stable scripts** set: `HAPPY_HOME_DIR=~/.happy`
-- **Dev scripts** set: `HAPPY_HOME_DIR=~/.happy-dev`
+- **Stable scripts** set: `HAPPY_HOME_DIR=~/.happy-next`
+- **Dev scripts** set: `HAPPY_HOME_DIR=~/.happy-next-dev`
 
 Everything else (auth, sessions, logs, daemon) automatically follows the `HAPPY_HOME_DIR` setting.
 

@@ -39,8 +39,8 @@ export const ja: TranslationStructure = {
         emptyDescription: 'OpenClaw ゲートウェイを追加して AI とチャットを開始',
         addMachine: 'マシンを追加',
         machineType: 'マシンタイプ',
-        machineTypeHappy: 'Happy マシン',
-        machineTypeHappyDescription: 'コンピューター上の Happy マシン経由で接続',
+        machineTypeHappy: 'Happy Next マシン',
+        machineTypeHappyDescription: 'コンピューター上の Happy Next マシン経由で接続',
         machineTypeDirect: '直接接続',
         machineTypeDirectDescription: 'OpenClaw ゲートウェイに直接接続',
         gatewayUrl: 'ゲートウェイ URL',
@@ -769,7 +769,7 @@ export const ja: TranslationStructure = {
         // Used by Server Configuration screen (app/(app)/server.tsx)
         serverConfiguration: 'サーバー設定',
         enterServerUrl: 'サーバーURLを入力してください',
-        notValidHappyServer: '有効なHappy Serverではありません',
+        notValidHappyServer: '有効なHappy Next Serverではありません',
         changeServer: 'サーバーを変更',
         continueWithServer: 'このサーバーで続行しますか？',
         resetToDefault: 'デフォルトにリセット',
@@ -789,9 +789,9 @@ export const ja: TranslationStructure = {
         killSessionConfirm: 'このセッションを終了してもよろしいですか？',
         archiveSession: 'セッションをアーカイブ',
         archiveSessionConfirm: 'このセッションをアーカイブしてもよろしいですか？',
-        happySessionIdCopied: 'Happy Session IDがクリップボードにコピーされました',
-        failedToCopySessionId: 'Happy Session IDのコピーに失敗しました',
-        happySessionId: 'Happy Session ID',
+        happySessionIdCopied: 'Happy Next Session IDがクリップボードにコピーされました',
+        failedToCopySessionId: 'Happy Next Session IDのコピーに失敗しました',
+        happySessionId: 'Happy Next Session ID',
         claudeCodeSessionId: 'Claude Code Session ID',
         claudeCodeSessionIdCopied: 'Claude Code Session IDがクリップボードにコピーされました',
         aiProvider: 'AIプロバイダー',
@@ -826,7 +826,7 @@ export const ja: TranslationStructure = {
         path: 'パス',
         operatingSystem: 'オペレーティングシステム',
         processId: 'プロセスID',
-        happyHome: 'Happy Home',
+        happyHome: 'Happy Next Home',
         copyMetadata: 'メタデータをコピー',
         agentState: 'エージェント状態',
         controlledByUser: 'ユーザーによる制御',
@@ -990,7 +990,7 @@ export const ja: TranslationStructure = {
     },
 
     sidebar: {
-        sessionsTitle: 'Happy',
+        sessionsTitle: 'Happy Next',
     },
 
     toolView: {
@@ -1140,8 +1140,8 @@ export const ja: TranslationStructure = {
         agentId: 'エージェントID',
         agentIdPlaceholder: 'ElevenLabs エージェントIDを入力',
 
-        happyVoiceTitle: 'Happy Voice',
-        happyVoiceDescription: 'セルフホスト型Happy Voice音声ゲートウェイを設定します。',
+        happyVoiceTitle: 'Happy Next Voice',
+        happyVoiceDescription: 'セルフホスト型Happy Next Voice音声ゲートウェイを設定します。',
         gatewayUrl: 'ゲートウェイURL',
         gatewayUrlPlaceholder: 'https://voice.example.com',
         publicKey: '公開鍵',

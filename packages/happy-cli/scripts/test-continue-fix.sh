@@ -76,4 +76,4 @@ echo "To test --continue in real usage:"
 echo "  happy --continue \"test continuation\""
 echo
 echo "To check logs:"
-echo "  tail -50 ~/.happy/logs/\$(ls -t ~/.happy/logs/ | head -1) | grep -E '(session|continue|resume)'"
+echo "  tail -50 ~/.happy-next/logs/\$(ls -t ~/.happy-next/logs/ | head -1) | grep -E '(session|continue|resume)'"

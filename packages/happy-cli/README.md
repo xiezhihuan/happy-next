@@ -48,7 +48,7 @@ happy connect gemini
 ### Utility Commands
 
 - `happy auth` – Manage authentication
-- `happy connect` – Store AI vendor API keys in Happy cloud
+- `happy connect` – Store AI vendor API keys in Happy Next cloud
 - `happy notify` – Send a push notification to your devices
 - `happy daemon` – Manage background service
 - `happy doctor` – System diagnostics & troubleshooting
@@ -94,7 +94,7 @@ happy gemini project get          # Show current Google Cloud Project ID
 
 - `HAPPY_SERVER_URL` - Custom server URL (default: https://api.happy-next.com)
 - `HAPPY_WEBAPP_URL` - Custom web app URL (default: https://app.happy-next.com)
-- `HAPPY_HOME_DIR` - Custom home directory for Happy data (default: ~/.happy)
+- `HAPPY_HOME_DIR` - Custom home directory for Happy Next data (default: ~/.happy-next)
 - `HAPPY_DISABLE_CAFFEINATE` - Disable macOS sleep prevention (set to `true`, `1`, or `yes`)
 - `HAPPY_EXPERIMENTAL` - Enable experimental features (set to `true`, `1`, or `yes`)
 

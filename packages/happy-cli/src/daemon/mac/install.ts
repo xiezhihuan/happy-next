@@ -9,7 +9,7 @@ import { projectPath } from '@/projectPath';
 const PLIST_LABEL = 'com.happy-cli.daemon';
 const PLIST_DIR = join(os.homedir(), 'Library', 'LaunchAgents');
 const PLIST_FILE = join(PLIST_DIR, `${PLIST_LABEL}.plist`);
-const LOG_DIR = join(os.homedir(), '.happy');
+const LOG_DIR = join(os.homedir(), '.happy-next');
 
 export async function install(): Promise<void> {
     const runtime = process.execPath;
@@ -64,10 +64,10 @@ export async function install(): Promise<void> {
             <integer>30</integer>
 
             <key>StandardOutPath</key>
-            <string>${join(os.homedir(), '.happy', 'daemon.log')}</string>
+            <string>${join(LOG_DIR, 'daemon.log')}</string>
 
             <key>StandardErrorPath</key>
-            <string>${join(os.homedir(), '.happy', 'daemon.err')}</string>
+            <string>${join(LOG_DIR, 'daemon.err')}</string>
 
             <key>WorkingDirectory</key>
             <string>/tmp</string>
