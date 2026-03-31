@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'App version to submit (e.g. 1.2.3)'
+        description: '[iOS App Store] App version to submit (e.g. 1.2.3)'
         required: true
         type: string
 
