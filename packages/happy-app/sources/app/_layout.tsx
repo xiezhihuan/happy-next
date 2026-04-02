@@ -153,6 +153,39 @@ function HorizontalSafeAreaWrapper({ children }: { children: React.ReactNode }) 
 
 let lock = new AsyncLock();
 let loaded = false;
+
+const allFonts = {
+    SpaceMono: require('@/assets/fonts/SpaceMono-Regular.ttf'),
+    'IBMPlexSans-Regular': require('@/assets/fonts/IBMPlexSans-Regular.ttf'),
+    'IBMPlexSans-Italic': require('@/assets/fonts/IBMPlexSans-Italic.ttf'),
+    'IBMPlexSans-SemiBold': require('@/assets/fonts/IBMPlexSans-SemiBold.ttf'),
+    'IBMPlexMono-Regular': require('@/assets/fonts/IBMPlexMono-Regular.ttf'),
+    'IBMPlexMono-Italic': require('@/assets/fonts/IBMPlexMono-Italic.ttf'),
+    'IBMPlexMono-SemiBold': require('@/assets/fonts/IBMPlexMono-SemiBold.ttf'),
+    'BricolageGrotesque-Bold': require('@/assets/fonts/BricolageGrotesque-Bold.ttf'),
+    ...FontAwesome.font,
+    ...FontAwesome6.font,
+    ...Ionicons.font,
+    ...Octicons.font,
+    ...MaterialCommunityIcons.font,
+    ...AntDesign.font,
+};
+
+async function loadFontsWithRetry() {
+    for (let attempt = 1; attempt <= 3; attempt++) {
+        try {
+            await Fonts.loadAsync(allFonts);
+            return;
+        } catch (e) {
+            if (attempt < 3) {
+                console.warn(`Font loading attempt ${attempt} failed, retrying...`, e);
+            } else {
+                throw e;
+            }
+        }
+    }
+}
+
 async function loadFonts() {
     await lock.inLock(async () => {
         if (loaded) {
@@ -165,59 +198,14 @@ async function loadFonts() {
             (window as any).__TAURI_INTERNALS__ !== undefined;
 
         if (!isTauri) {
-            // Normal font loading for non-Tauri environments (native and regular web)
-            await Fonts.loadAsync({
-                // Keep existing font
-                SpaceMono: require('@/assets/fonts/SpaceMono-Regular.ttf'),
-
-                // IBM Plex Sans family
-                'IBMPlexSans-Regular': require('@/assets/fonts/IBMPlexSans-Regular.ttf'),
-                'IBMPlexSans-Italic': require('@/assets/fonts/IBMPlexSans-Italic.ttf'),
-                'IBMPlexSans-SemiBold': require('@/assets/fonts/IBMPlexSans-SemiBold.ttf'),
-
-                // IBM Plex Mono family  
-                'IBMPlexMono-Regular': require('@/assets/fonts/IBMPlexMono-Regular.ttf'),
-                'IBMPlexMono-Italic': require('@/assets/fonts/IBMPlexMono-Italic.ttf'),
-                'IBMPlexMono-SemiBold': require('@/assets/fonts/IBMPlexMono-SemiBold.ttf'),
-
-                // Bricolage Grotesque  
-                'BricolageGrotesque-Bold': require('@/assets/fonts/BricolageGrotesque-Bold.ttf'),
-
-                ...FontAwesome.font,
-                ...FontAwesome6.font,
-                ...Ionicons.font,
-                ...Octicons.font,
-                ...MaterialCommunityIcons.font,
-                ...AntDesign.font,
-            });
+            // Handle slow networks where FontFaceObserver's 6s timeout may fire
+            await loadFontsWithRetry();
         } else {
             // For Tauri, skip Font Face Observer as fonts are loaded via CSS
             console.log('Do not wait for fonts to load');
             (async () => {
                 try {
-                    await Fonts.loadAsync({
-                        // Keep existing font
-                        SpaceMono: require('@/assets/fonts/SpaceMono-Regular.ttf'),
-
-                        // IBM Plex Sans family
-                        'IBMPlexSans-Regular': require('@/assets/fonts/IBMPlexSans-Regular.ttf'),
-                        'IBMPlexSans-Italic': require('@/assets/fonts/IBMPlexSans-Italic.ttf'),
-                        'IBMPlexSans-SemiBold': require('@/assets/fonts/IBMPlexSans-SemiBold.ttf'),
-
-                        // IBM Plex Mono family  
-                        'IBMPlexMono-Regular': require('@/assets/fonts/IBMPlexMono-Regular.ttf'),
-                        'IBMPlexMono-Italic': require('@/assets/fonts/IBMPlexMono-Italic.ttf'),
-                        'IBMPlexMono-SemiBold': require('@/assets/fonts/IBMPlexMono-SemiBold.ttf'),
-
-                        // Bricolage Grotesque  
-                        'BricolageGrotesque-Bold': require('@/assets/fonts/BricolageGrotesque-Bold.ttf'),
-
-                        ...FontAwesome.font,
-                        ...Ionicons.font,
-                        ...Octicons.font,
-                        ...MaterialCommunityIcons.font,
-                        ...AntDesign.font,
-                    });
+                    await Fonts.loadAsync(allFonts);
                 } catch (e) {
                     // Ignore
                 }
