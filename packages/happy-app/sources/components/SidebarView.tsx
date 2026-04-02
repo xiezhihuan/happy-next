@@ -218,13 +218,13 @@ export const SidebarView = React.memo(() => {
             <View style={[styles.container, { paddingTop: safeArea.top }]}>
                 <View style={[styles.header, { height: headerHeight }]}>
                     {/* Logo - always first */}
-                    <View style={styles.logoContainer}>
+                    <Pressable style={styles.logoContainer} onPress={() => router.push('/(app)')}>
                         <Image
                             source={theme.dark ? require('@/assets/images/logo-white.png') : require('@/assets/images/logo-black.png')}
                             contentFit="contain"
                             style={[styles.logo, { height: 24, width: 24 }]}
                         />
-                    </View>
+                    </Pressable>
 
                     {/* Left-justified title - in document flow, prevents overlap */}
                     {shouldLeftJustify && (
