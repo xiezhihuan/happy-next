@@ -522,6 +522,11 @@ export const storage = create<StorageState>()((set, get) => {
                     ? resolveSessionOnlineState({ active: false, activeAt: existing!.activeAt })
                     : presence;
 
+                // Keep the more recent thinking state so stale fetchSessions
+                // data doesn't overwrite a fresh ephemeral activity update.
+                const useExistingThinking = existing != null
+                    && existing.thinkingAt > (session.thinkingAt ?? 0);
+
                 const mergedSession: Session = {
                     ...session,
                     // Preserve optimistic archive state
@@ -532,6 +537,8 @@ export const storage = create<StorageState>()((set, get) => {
                     metadataVersion: useExistingMetadata ? existing.metadataVersion : session.metadataVersion,
                     agentState: useExistingAgentState ? existing.agentState : session.agentState,
                     agentStateVersion: useExistingAgentState ? existing.agentStateVersion : session.agentStateVersion,
+                    thinking: useExistingThinking ? existing.thinking : (session.thinking ?? false),
+                    thinkingAt: useExistingThinking ? existing.thinkingAt : (session.thinkingAt ?? 0),
                     presence: resolvedPresence,
                     draft: existingDraft || savedDraft || session.draft || null,
                     permissionMode: cloudSessionMode?.permissionMode ?? existing?.permissionMode ?? session.permissionMode ?? 'default',
