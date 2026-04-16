@@ -256,6 +256,42 @@ function isConversationNodeType(value: unknown): value is ClaudeConversationNode
     return value === 'user' || value === 'assistant' || value === 'attachment' || value === 'system';
 }
 
+async function extractCwdFromJsonl(jsonlPath: string): Promise<string | null> {
+    const fileStream = createReadStream(jsonlPath, { encoding: 'utf8' });
+    const rl = createInterface({
+        input: fileStream,
+        crlfDelay: Infinity
+    });
+
+    try {
+        for await (const line of rl) {
+            if (!line.trim()) continue;
+            try {
+                const entry = JSON.parse(line);
+                if (typeof entry?.cwd === 'string' && entry.cwd.trim()) {
+                    return entry.cwd.trim();
+                }
+            } catch {
+                // Skip malformed lines
+            }
+        }
+    } catch {
+        // Read failures treated as no cwd found
+    } finally {
+        rl.close();
+        fileStream.destroy();
+    }
+    return null;
+}
+
+async function findFirstCwdInJsonls(projectDir: string, filenames: string[]): Promise<string | null> {
+    for (const filename of filenames) {
+        const cwd = await extractCwdFromJsonl(join(projectDir, filename));
+        if (cwd) return cwd;
+    }
+    return null;
+}
+
 async function parseClaudeSessionFileMetadata(jsonlPath: string): Promise<ClaudeParsedSessionFileMetadata> {
     const fileStream = createReadStream(jsonlPath, { encoding: 'utf8' });
     const rl = createInterface({
@@ -471,9 +507,7 @@ export async function listClaudeSessionsFromIndex(): Promise<ClaudeSessionIndexE
             }
         }
 
-        const originalPath = typeof data?.originalPath === 'string'
-            ? data.originalPath
-            : '/' + projectId.replace(/^-/, '').replace(/-/g, '/');
+        const indexOriginalPath = typeof data?.originalPath === 'string' ? data.originalPath : null;
 
         const indexedSessions = extractSessionsFromIndex(data);
         const indexedMap = new Map<string, ParsedSession>();
@@ -482,6 +516,7 @@ export async function listClaudeSessionsFromIndex(): Promise<ClaudeSessionIndexE
         }
 
         const sessions: ParsedSession[] = [];
+        const jsonlFilenames: string[] = [];
         try {
             scannedProjectIds.add(projectId);
             const projectEntries = await readdir(projectDir, { withFileTypes: true }) as Dirent[];
@@ -489,6 +524,7 @@ export async function listClaudeSessionsFromIndex(): Promise<ClaudeSessionIndexE
                 if (!entry.isFile()) continue;
                 if (!entry.name.endsWith('.jsonl')) continue;
                 if (entry.name.startsWith('agent-')) continue;
+                jsonlFilenames.push(entry.name);
 
                 const sessionId = entry.name.replace(/\.jsonl$/, '');
                 if (!sessionId) continue;
@@ -581,6 +617,10 @@ export async function listClaudeSessionsFromIndex(): Promise<ClaudeSessionIndexE
             // If scan fails, fall back to index-only sessions
             sessions.push(...indexedSessions);
         }
+
+        const originalPath = indexOriginalPath
+            ?? await findFirstCwdInJsonls(projectDir, jsonlFilenames)
+            ?? '/' + projectId.replace(/^-/, '').replace(/-/g, '/');
 
         const dirName = originalPath.split(/[\\/]/).filter(Boolean).pop() || null;
 
